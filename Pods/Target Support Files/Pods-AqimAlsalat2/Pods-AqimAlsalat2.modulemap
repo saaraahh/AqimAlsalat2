@@ -1,0 +1,6 @@
+framework module Pods_AqimAlsalat2 {
+  umbrella header "Pods-AqimAlsalat2-umbrella.h"
+
+  export *
+  module * { export * }
+}
