@@ -5,7 +5,6 @@
 //  Created by Dalal Mansour on 2/9/18.
 //  Copyright © 2018 Dalal Mansour. All rights reserved.
 //
-
 import UIKit
 import GoogleMaps
 import MapKit
@@ -25,7 +24,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     
     //distance
     var distanceInMeters, distanceInMeters1, distanceInMeters2 :Double?
-    
+    var d1,d2 :Double?
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,9 +43,10 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         // create distance and nodes
         
         //distance
-        let distanceInMeters = userLocation.distance(from: userLocation1)
-        let distanceInMeters2 = userLocation.distance(from: userLocation2)
-        let distanceInMeters3 = userLocation.distance(from: userLocation3)
+        var userLocation0 =  CLLocation(latitude: d1!, longitude: d2!)
+        let distanceInMeters = userLocation0.distance(from: userLocation1)
+        let distanceInMeters2 = userLocation0.distance(from: userLocation2)
+        let distanceInMeters3 = userLocation0.distance(from: userLocation3)
         
         
         
@@ -80,17 +80,9 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
             print("reeed")
         }
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
     }
     
+
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         userLocation = locations.last!
         _ = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
@@ -100,6 +92,9 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         mapView.isMyLocationEnabled = true
         view = mapView
+        
+        d1 = userLocation.coordinate.latitude
+        d2 = userLocation.coordinate.longitude
         
         let marker = GMSMarker()
         marker.position = CLLocationCoordinate2D(latitude: 24.723561, longitude: 46.622433)
