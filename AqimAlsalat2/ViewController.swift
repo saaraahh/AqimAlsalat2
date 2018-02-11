@@ -25,25 +25,14 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     //distance
     var distanceInMeters, distanceInMeters1, distanceInMeters2 :Double?
     var d1,d2 :Double?
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        //user location
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.startUpdatingLocation()
-        
-        
-        //create priority queue
-        
+    
+    
+    
+    func autmatically(d1:Double,d2:Double)
+    {
         
         var nodes = PriorityQueue<Mosque>(sort: { $0.priority < $1.priority })
-        
-        // create distance and nodes
-        
-        //distance
-        var userLocation0 =  CLLocation(latitude: d1!, longitude: d2!)
+        var userLocation0 =  CLLocation(latitude: d1, longitude: d2)
         let distanceInMeters = userLocation0.distance(from: userLocation1)
         let distanceInMeters2 = userLocation0.distance(from: userLocation2)
         let distanceInMeters3 = userLocation0.distance(from: userLocation3)
@@ -82,7 +71,66 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         
     }
     
-
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        //user location
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.startUpdatingLocation()
+        
+        
+        //create priority queue
+        
+        
+        //  var nodes = PriorityQueue<Mosque>(sort: { $0.priority < $1.priority })
+        
+        // create distance and nodes
+        
+        //distance
+        /*  var userLocation0 =  CLLocation(latitude: d1!, longitude: d2!)
+         let distanceInMeters = userLocation0.distance(from: userLocation1)
+         let distanceInMeters2 = userLocation0.distance(from: userLocation2)
+         let distanceInMeters3 = userLocation0.distance(from: userLocation3)
+         
+         
+         
+         
+         //nodes
+         let m =  Mosque(priority: distanceInMeters, name: "a",location:(userLocation2), status:"green")
+         let  m1 = Mosque(priority: distanceInMeters2, name: "b",location:(userLocation3), status:"orange")
+         let m2 = Mosque(priority: distanceInMeters3, name: "c",location:(userLocation1), status:"green")
+         
+         
+         print("11111a:\(distanceInMeters)")
+         print("22222b:\(distanceInMeters2)")
+         print("333333c:\(distanceInMeters3)")
+         
+         //peek Node
+         var peekNode = Mosque(priority: 1, name: "dalal", location: (userLocation1), status:"grey")
+         
+         if(m.status != "red")
+         {
+         nodes.enqueue(element: m)
+         nodes.enqueue(element: m1)
+         nodes.enqueue(element: m2)
+         
+         peekNode = nodes.peek()!
+         print(" * Node(priority: \(peekNode.priority))"+" * Node(names: \(peekNode.location.coordinate.latitude))"+" * Node(names: \(peekNode.name))")
+         
+         //callGoogleMaps(latitude: peekNode.location.coordinate.latitude,longitude: peekNode.location.coordinate.longitude)
+         
+         }
+         else{
+         print("reeed")
+         }*/
+        
+    }
+    
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         userLocation = locations.last!
         _ = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
@@ -116,7 +164,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         markerSquirt2.map = mapView
         
         
-        
+        autmatically(d1: d1!, d2: d2!)
         
         locationManager.stopUpdatingLocation()
     }
