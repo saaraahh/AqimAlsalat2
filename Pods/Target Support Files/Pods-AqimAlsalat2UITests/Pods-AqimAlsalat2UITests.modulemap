@@ -1,0 +1,6 @@
+framework module Pods_AqimAlsalat2UITests {
+  umbrella header "Pods-AqimAlsalat2UITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
