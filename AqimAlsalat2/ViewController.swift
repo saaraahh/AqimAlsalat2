@@ -73,7 +73,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
             peekNode = nodes.peek()!
             print(" * Node(priority: \(peekNode.priority))"+" * Node(names: \(peekNode.location.coordinate.latitude))"+" * Node(names: \(peekNode.name))")
             
-            callGoogleMaps(latitude: peekNode.location.coordinate.latitude,longitude: peekNode.location.coordinate.longitude)
+            //callGoogleMaps(latitude: peekNode.location.coordinate.latitude,longitude: peekNode.location.coordinate.longitude)
             
         }
         else{

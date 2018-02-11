@@ -19,6 +19,7 @@
 		B2F5F35309B5A2A653481860 /* Pods_AqimAlsalat2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A42FC6EAD2AD7AB74EFDEFF7 /* Pods_AqimAlsalat2UITests.framework */; };
 		E4DF1CDC203030DC00651362 /* Heap.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DF1CDB203030DB00651362 /* Heap.swift */; };
 		E4DF1CDE2030310200651362 /* PriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DF1CDD2030310200651362 /* PriorityQueue.swift */; };
+		E4DF1CE0203032C200651362 /* Mosque.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DF1CDF203032C200651362 /* Mosque.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		E440181020301F5700B17AA2 /* Location1.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Location1.gpx; sourceTree = "<group>"; };
 		E4DF1CDB203030DB00651362 /* Heap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Heap.swift; sourceTree = "<group>"; };
 		E4DF1CDD2030310200651362 /* PriorityQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityQueue.swift; sourceTree = "<group>"; };
+		E4DF1CDF203032C200651362 /* Mosque.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mosque.swift; sourceTree = "<group>"; };
 		E604A3A3296588061742A502 /* Pods-AqimAlsalat2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AqimAlsalat2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AqimAlsalat2/Pods-AqimAlsalat2.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -136,6 +138,7 @@
 				70FDB0AE20301CA200A9C55A /* ViewController.swift */,
 				E4DF1CDB203030DB00651362 /* Heap.swift */,
 				70FDB0B020301CA200A9C55A /* Main.storyboard */,
+				E4DF1CDF203032C200651362 /* Mosque.swift */,
 				E4DF1CDD2030310200651362 /* PriorityQueue.swift */,
 				E440181020301F5700B17AA2 /* Location1.gpx */,
 				70FDB0B320301CA200A9C55A /* Assets.xcassets */,
@@ -471,6 +474,7 @@
 				E4DF1CDC203030DC00651362 /* Heap.swift in Sources */,
 				E4DF1CDE2030310200651362 /* PriorityQueue.swift in Sources */,
 				70FDB0AF20301CA200A9C55A /* ViewController.swift in Sources */,
+				E4DF1CE0203032C200651362 /* Mosque.swift in Sources */,
 				70FDB0AD20301CA200A9C55A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
