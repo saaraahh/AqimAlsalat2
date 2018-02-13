@@ -5,6 +5,7 @@
 //  Created by Dalal Mansour on 2/9/18.
 //  Copyright © 2018 Dalal Mansour. All rights reserved.
 //
+//daaa
 import UIKit
 import GoogleMaps
 import MapKit
@@ -66,7 +67,10 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
             
         }
         else{
-            print("reeed")
+            let alert = UIAlertController(title: "no available mosque", message: "There is no available mosque for congregation prayer//spilling", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: {action in
+            }))
+            self.present(alert, animated: true, completion: nil)
         }
         
     }
@@ -233,4 +237,10 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     
     
 }
-
+extension ViewController: GMSMapViewDelegate{
+    
+    //MARK - GMSMarker Dragging
+    func mapView(_ mapView: GMSMapView, didBeginDragging marker: GMSMarker) {
+        print("didBeginDragging")
+}
+}
