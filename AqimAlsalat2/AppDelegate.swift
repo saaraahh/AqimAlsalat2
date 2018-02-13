@@ -5,7 +5,7 @@
 //  Created by ساره عبدالله on ٢٥ جما١، ١٤٣٩ هـ.
 //  Copyright © ١٤٣٩ هـ ساره عبدالله. All rights reserved.
 //
-//dalal
+
 import UIKit
 import GoogleMaps
 @UIApplicationMain
