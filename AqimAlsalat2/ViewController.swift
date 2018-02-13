@@ -6,6 +6,7 @@
 //  Copyright © 2018 Dalal Mansour. All rights reserved.
 //
 //daaa
+//s
 import UIKit
 import GoogleMaps
 import MapKit
@@ -87,50 +88,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         locationManager.startUpdatingLocation()
         
         
-        //create priority queue
-        
-        
-        //  var nodes = PriorityQueue<Mosque>(sort: { $0.priority < $1.priority })
-        
-        // create distance and nodes
-        
-        //distance
-        /*  var userLocation0 =  CLLocation(latitude: d1!, longitude: d2!)
-         let distanceInMeters = userLocation0.distance(from: userLocation1)
-         let distanceInMeters2 = userLocation0.distance(from: userLocation2)
-         let distanceInMeters3 = userLocation0.distance(from: userLocation3)
-         
-         
-         
-         
-         //nodes
-         let m =  Mosque(priority: distanceInMeters, name: "a",location:(userLocation2), status:"green")
-         let  m1 = Mosque(priority: distanceInMeters2, name: "b",location:(userLocation3), status:"orange")
-         let m2 = Mosque(priority: distanceInMeters3, name: "c",location:(userLocation1), status:"green")
-         
-         
-         print("11111a:\(distanceInMeters)")
-         print("22222b:\(distanceInMeters2)")
-         print("333333c:\(distanceInMeters3)")
-         
-         //peek Node
-         var peekNode = Mosque(priority: 1, name: "dalal", location: (userLocation1), status:"grey")
-         
-         if(m.status != "red")
-         {
-         nodes.enqueue(element: m)
-         nodes.enqueue(element: m1)
-         nodes.enqueue(element: m2)
-         
-         peekNode = nodes.peek()!
-         print(" * Node(priority: \(peekNode.priority))"+" * Node(names: \(peekNode.location.coordinate.latitude))"+" * Node(names: \(peekNode.name))")
-         
-         //callGoogleMaps(latitude: peekNode.location.coordinate.latitude,longitude: peekNode.location.coordinate.longitude)
-         
-         }
-         else{
-         print("reeed")
-         }*/
+       
         
     }
     
@@ -179,6 +137,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         }
         
     }
+    
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Failed to find user's location: \(error.localizedDescription)")
     }
