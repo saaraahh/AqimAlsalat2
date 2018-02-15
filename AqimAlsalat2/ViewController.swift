@@ -8,6 +8,7 @@
 //hhh222
 //d
 //eee
+//kkkk
 import UIKit
 import GoogleMaps
 import MapKit
@@ -28,7 +29,7 @@ class ViewController:UIViewController,GMSMapViewDelegate {
     var userLoc =  CLLocation(latitude: 0, longitude: 0)
     var nodes = PriorityQueue<Mosque>(sort: { $0.priority < $1.priority })
     
- 
+ //ffff
     override func viewDidLoad() {
         super.viewDidLoad()
         
