@@ -6,6 +6,7 @@
 //  Copyright © 2018 Dalal Mansour. All rights reserved.
 //
 //hhh222
+//d
 import UIKit
 import GoogleMaps
 import MapKit
@@ -27,7 +28,6 @@ class ViewController:UIViewController,GMSMapViewDelegate {
     var nodes = PriorityQueue<Mosque>(sort: { $0.priority < $1.priority })
     
  
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
