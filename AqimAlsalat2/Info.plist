@@ -50,5 +50,10 @@
 	<string>aaaccess</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>llocation</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 </dict>
 </plist>
