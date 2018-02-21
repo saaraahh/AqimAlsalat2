@@ -10,29 +10,30 @@ import GoogleMaps
 import MapKit
 import Firebase
 import GeoFire
+import Alamofire
+import SwiftyJSON
 
-class ViewController: UIViewController,CLLocationManagerDelegate {
+class ViewController:UIViewController,CLLocationManagerDelegate, GMSMapViewDelegate {
     
     // database
     var ref: DatabaseReference!
-   
     
     //constants and variables
     lazy var mapView = GMSMapView()
     var locationManager = CLLocationManager()
     var  userLocation = CLLocation()
     let txt =  "we need your location please open the setting and enaible your location"
-  
+    
     //temprarly
     var userLocation1 =  CLLocation(latitude: 24.723561, longitude: 46.622433)
     var userLocation2 =  CLLocation(latitude: 24.713739, longitude: 46.613850)
     var userLocation3 =  CLLocation(latitude: 24.715295, longitude: 46.620974)
-
+    
     //distance
     var distanceInMeters=0.0
     var distanceInMeters1=0.0
     var distanceInMeters2=0.0
-
+    
     var userLoc =  CLLocation(latitude: 0, longitude: 0)
     var nodes = PriorityQueue<Mosque>(sort: { $0.priority < $1.priority })
     var  mosques=[Mosque]()
@@ -147,84 +148,19 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         var keys = [String:CLLocation]()
         
         let ref = Database.database().reference()
-     //   ref.child("mosque").observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
-            let geofireRef = ref.child("locations")
-            let geoFire = GeoFire(firebaseRef: geofireRef)
-           
-            let center = CLLocation(latitude:24.723561 , longitude: 46.637492)
-            var circleQuery = geoFire.query(at: center, withRadius: 5)
-            var queryHandle = circleQuery.observe(.keyEntered, with: { (key: String!, location: CLLocation!) in
-                keys[key] = location
-                print(keys.count)
-                print("Key '\(key)' entered the search area and is at location '\(location.coordinate.latitude)' '\(location.coordinate.longitude)'")
-            })
-        
-          /*  if let cakeSnapshot = snapshot.children.allObjects as? [DataSnapshot] {
-               for cakes in cakeSnapshot {
-                
-                     if let cake = cakes.value as? Dictionary <String, Any>  {
-                        let key = cakes.key as String
-                        if let lat = cake["Latitude"] as? String{
-                            if let lon = cake["Longitude"] as? String{
-                        let latitude = Double(lat) ?? 0.0
-                        let longitude = Double(lon) ?? 0.0
-                        
-                                geoFire.setLocation(CLLocation(latitude:latitude as! CLLocationDegrees , longitude: longitude as! CLLocationDegrees), forKey:key)
-                                
-                            }}
-                        
-                        }
-                    
-                  }
-               
-            }
-                
-            })*/
-        
-      
-       // let rootRef = Database.database().reference()
-       // let geoRef = GeoFire(firebaseRef: rootRef.child("locations"))
-      /* let geofireRef = Database.database().reference().child("locations")
+        //   ref.child("mosque").observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
+        let geofireRef = ref.child("locations")
         let geoFire = GeoFire(firebaseRef: geofireRef)
-       // geoFire.setLocation(CLLocation(latitude: 24.723561, longitude: 46.637492), forKey:"0")
+        
         let center = CLLocation(latitude:24.723561 , longitude: 46.637492)
         var circleQuery = geoFire.query(at: center, withRadius: 5)
-        
         var queryHandle = circleQuery.observe(.keyEntered, with: { (key: String!, location: CLLocation!) in
-            print("Key '\(key)' entered the search area and is at location '\(location)'")
+            keys[key] = location
+            print(keys.count)
+            print("Key '\(key)' entered the search area and is at location '\(location.coordinate.latitude)' '\(location.coordinate.longitude)'")
         })
-        */
-       /* ref = Database.database().reference()
-        ref.observeSingleEvent(of: .value, with: { (snapshot) in
-            for child in snapshot.children {
-                let snap = child as! DataSnapshot
-                let key = snap.key
-                let value = snap.value
-                
-                print("key = \(key)  value = \(value!)")
-            }
-        })
-        */
-        
-        // ref = Database.database().reference()
-        //let geofireRef = ref.child("users_locations")
-        //let geoFire = GeoFire(firebaseRef: geofireRef)
-        
-       // var lat = Array<Double>()
-       /* for i in 0...1500 {
-            let j = String(i)
-        ref.child("mosque").child(j).child("Latitude").observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
-            let value = snapshot.value as? NSDictionary
-            var lat = value?["Latitude"]? ["Longitude"] as? String ?? ""
-         
-            })
-        }*/
         
         
-        //lat.sort(by: {($0 as AnyObject).key > ($1 as AnyObject).key})
-        
-        //user location
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -238,27 +174,11 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         mosques.append(m1)
         mosques.append(m2)
         
-    }
-    
-
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        userLocation = locations.last!
-        _ = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
+        let camera = GMSCameraPosition.camera(withLatitude: 24.725239,longitude: 46.637492, zoom: 13.0)
         
         mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-        mapView.isMyLocationEnabled = true
-        view = mapView
-        
-        d1 = userLocation.coordinate.latitude
-        d2 = userLocation.coordinate.longitude
-        
-        
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: 24.723561, longitude: 46.622433)
-        marker.title = "mosque1"
-        marker.snippet = "Australia"
-        marker.map = mapView
+        mapView.delegate = self
+        self.view = mapView
         
         let button = UIButton(frame: CGRect(x: 300, y: 50, width: 100, height: 100))
         button.setTitle("Dalal", for: .normal)
@@ -341,13 +261,13 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         _ = GMSCameraPosition.camera(withLatitude: userLocation.coordinate.latitude,
                                      longitude: userLocation.coordinate.longitude, zoom: 13.0)
         
-         userLoc = userLocation
+        userLoc = userLocation
         locationManager.stopUpdatingLocation()
         addMarkers(userLoc:CLLocation(latitude: userLocation.coordinate.latitude,longitude: userLocation.coordinate.longitude))
     }//end didUpdateLocations method
     
     func addMarkers(userLoc:CLLocation){
-    
+        
         let muser = GMSMarker()
         muser.position = CLLocationCoordinate2D(latitude: userLoc.coordinate.latitude, longitude: userLoc.coordinate.longitude)
         muser.title = "useer location"
@@ -383,3 +303,4 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         // Dispose of any resources that can be recreated.
     }
 }//end class
+

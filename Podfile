@@ -9,6 +9,7 @@ target 'AqimAlsalat2' do
    pod 'GoogleMaps'
    pod 'GooglePlaces'
    pod 'Alamofire'
+   pod 'SwiftyJSON'
    pod 'Firebase/Core'
    pod 'Firebase/Database'
    pod ‘GeoFire’, :git => ‘https://github.com/firebase/geofire-objc.git'

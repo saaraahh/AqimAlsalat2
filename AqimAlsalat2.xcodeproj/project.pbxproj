@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		567794102032FABC003A13E8 /* retriveM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5677940F2032FABC003A13E8 /* retriveM.swift */; };
 		56DAA8682038599F001530A8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 56DAA8672038599F001530A8 /* GoogleService-Info.plist */; };
 		70FDB0AD20301CA200A9C55A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70FDB0AC20301CA200A9C55A /* AppDelegate.swift */; };
 		70FDB0AF20301CA200A9C55A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70FDB0AE20301CA200A9C55A /* ViewController.swift */; };
@@ -46,7 +45,6 @@
 		0FD3BB3748F2C1797AE928E2 /* Pods_AqimAlsalat2Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AqimAlsalat2Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		178D86218D6194EB85222984 /* Pods_AqimAlsalat2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AqimAlsalat2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2399E5B29B8CF632CBF096E8 /* Pods-AqimAlsalat2Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AqimAlsalat2Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AqimAlsalat2Tests/Pods-AqimAlsalat2Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		5677940F2032FABC003A13E8 /* retriveM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = retriveM.swift; sourceTree = "<group>"; };
 		56DAA8672038599F001530A8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		70FDB0A920301CA200A9C55A /* AqimAlsalat2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AqimAlsalat2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		70FDB0AC20301CA200A9C55A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -140,7 +138,6 @@
 			children = (
 				70FDB0AC20301CA200A9C55A /* AppDelegate.swift */,
 				70FDB0AE20301CA200A9C55A /* ViewController.swift */,
-				5677940F2032FABC003A13E8 /* retriveM.swift */,
 				E4DF1CDB203030DB00651362 /* Heap.swift */,
 				70FDB0B020301CA200A9C55A /* Main.storyboard */,
 				E4DF1CDF203032C200651362 /* Mosque.swift */,
@@ -350,6 +347,7 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/GeoFire/GeoFire.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -358,6 +356,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GeoFire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -492,7 +491,6 @@
 				E4DF1CDC203030DC00651362 /* Heap.swift in Sources */,
 				E4DF1CDE2030310200651362 /* PriorityQueue.swift in Sources */,
 				70FDB0AF20301CA200A9C55A /* ViewController.swift in Sources */,
-				567794102032FABC003A13E8 /* retriveM.swift in Sources */,
 				E4DF1CE0203032C200651362 /* Mosque.swift in Sources */,
 				70FDB0AD20301CA200A9C55A /* AppDelegate.swift in Sources */,
 			);
