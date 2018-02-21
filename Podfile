@@ -8,6 +8,12 @@ target 'AqimAlsalat2' do
   # Pods for AqimAlsalat2
    pod 'GoogleMaps'
    pod 'GooglePlaces'
+   pod 'Alamofire'
+   pod 'SwiftyJSON'
+   pod 'Firebase/Core'
+   pod 'Firebase/Database'
+   pod ‘GeoFire’, :git => ‘https://github.com/firebase/geofire-objc.git'
+
   target 'AqimAlsalat2Tests' do
     inherit! :search_paths
     # Pods for testing

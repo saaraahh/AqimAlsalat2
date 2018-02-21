@@ -8,27 +8,32 @@
 import UIKit
 import GoogleMaps
 import MapKit
+import Firebase
+import GeoFire
 import Alamofire
 import SwiftyJSON
 
 class ViewController:UIViewController,CLLocationManagerDelegate, GMSMapViewDelegate {
-  
+    
+    // database
+    var ref: DatabaseReference!
+    
     //constants and variables
     lazy var mapView = GMSMapView()
     var locationManager = CLLocationManager()
     var  userLocation = CLLocation()
     let txt =  "we need your location please open the setting and enaible your location"
-  
+    
     //temprarly
     var userLocation1 =  CLLocation(latitude: 24.723561, longitude: 46.622433)
     var userLocation2 =  CLLocation(latitude: 24.713739, longitude: 46.613850)
     var userLocation3 =  CLLocation(latitude: 24.715295, longitude: 46.620974)
-
+    
     //distance
     var distanceInMeters=0.0
     var distanceInMeters1=0.0
     var distanceInMeters2=0.0
-
+    
     var userLoc =  CLLocation(latitude: 0, longitude: 0)
     var nodes = PriorityQueue<Mosque>(sort: { $0.priority < $1.priority })
     var  mosques=[Mosque]()
@@ -139,6 +144,23 @@ class ViewController:UIViewController,CLLocationManagerDelegate, GMSMapViewDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //database
+        var keys = [String:CLLocation]()
+        
+        let ref = Database.database().reference()
+        //   ref.child("mosque").observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
+        let geofireRef = ref.child("locations")
+        let geoFire = GeoFire(firebaseRef: geofireRef)
+        
+        let center = CLLocation(latitude:24.723561 , longitude: 46.637492)
+        var circleQuery = geoFire.query(at: center, withRadius: 5)
+        var queryHandle = circleQuery.observe(.keyEntered, with: { (key: String!, location: CLLocation!) in
+            keys[key] = location
+            print(keys.count)
+            print("Key '\(key)' entered the search area and is at location '\(location.coordinate.latitude)' '\(location.coordinate.longitude)'")
+        })
+        
+        
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -239,13 +261,13 @@ class ViewController:UIViewController,CLLocationManagerDelegate, GMSMapViewDeleg
         _ = GMSCameraPosition.camera(withLatitude: userLocation.coordinate.latitude,
                                      longitude: userLocation.coordinate.longitude, zoom: 13.0)
         
-         userLoc = userLocation
+        userLoc = userLocation
         locationManager.stopUpdatingLocation()
         addMarkers(userLoc:CLLocation(latitude: userLocation.coordinate.latitude,longitude: userLocation.coordinate.longitude))
     }//end didUpdateLocations method
     
     func addMarkers(userLoc:CLLocation){
-    
+        
         let muser = GMSMarker()
         muser.position = CLLocationCoordinate2D(latitude: userLoc.coordinate.latitude, longitude: userLoc.coordinate.longitude)
         muser.title = "useer location"
@@ -281,3 +303,4 @@ class ViewController:UIViewController,CLLocationManagerDelegate, GMSMapViewDeleg
         // Dispose of any resources that can be recreated.
     }
 }//end class
+
